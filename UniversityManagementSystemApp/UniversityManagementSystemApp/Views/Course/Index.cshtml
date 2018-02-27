@@ -1,0 +1,77 @@
+﻿@using UniversityManagementSystemApp.Models
+@model UniversityManagementSystemApp.Models.Course
+@{
+    ViewBag.Title = "Add Course";
+  
+}
+
+<h2>Add Course</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="~/Content/Mystyle.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    @if (ViewBag.message != null)
+    {
+        @ViewBag.message
+    }
+
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+                <td>@Html.LabelFor(x => x.CourseCode,"Course Code:  ")</td>
+                <td>@Html.TextBoxFor(x => x.CourseCode)</td>
+                <td>@Html.ValidationMessageFor(x => x.CourseCode, "", new {@style = "color:red"})</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.CourseName, "Course Name:  ")</td>
+                <td>@Html.TextBoxFor(x => x.CourseName)</td>
+                <td>@Html.ValidationMessageFor(x => x.CourseName, "", new {@style = "color:red"})</td>
+
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(x => x.Credit, "Credit:  ")</td>
+                <td>@Html.TextBoxFor(x => x.Credit)</td>
+                <td>@Html.ValidationMessageFor(x => x.Credit, "", new {@style = "color:red"})</td>
+
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(x => x.Description, "Description:  ")</td>
+                <td>@Html.TextAreaFor(x => x.Description)</td>
+                <td>@Html.ValidationMessageFor(x => x.Description)</td>
+
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(x => x.DepartmentId,"Department:  ")</td>
+                <td>@Html.DropDownListFor(x => x.DepartmentId, new SelectList(ViewBag.departments, "Id", "DeptName"), ("--Select Department--"))</td>
+                <td>@Html.ValidationMessageFor(x => x.DepartmentId, "", new {@style = "color:red"})</td>
+
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(x => x.SemesterId,"Semester:  ")</td>
+                <td>@Html.DropDownListFor(x => x.SemesterId, new SelectList(ViewBag.semester, "Id", "SemesterName"), ("--Select Semester--"))</td>
+                <td>@Html.ValidationMessageFor(x => x.SemesterId, "", new {@style = "color:red"})</td>
+
+            </tr>
+
+            <tr>
+                <td><input type="submit" value="Save"/></td>
+            </tr>
+        </table>
+    }
+</div>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>
